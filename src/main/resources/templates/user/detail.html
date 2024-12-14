@@ -1,0 +1,207 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="image/logo.ico">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw==" crossorigin="anonymous" referrerpolicy="no-referrer"
+    /> -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+    <link href='https://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.2/js/toastr.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g==" crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script src="js/menu.js"></script>
+    <script src="js/product.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/comment.js"></script>
+    <script>
+        window.onload = function() {
+            loadMenu();
+            loadAProduct();
+            loadProductComment();
+        }
+    </script>
+</head>
+
+<body>
+    <div id="menu" style="background-image: url(image/backgroundmenu.webp);"></div>
+
+    <div class="content">
+        <div class="row contentdetailproduct">
+            <div class="col-lg-3 col-md-5 col-sm-12 col-12">
+                <img id="imgdetailpro" src="image/sp1.webp" class="imgdetailpro">
+                <div class="listimgdetail row" id="listimgdetail">
+                    <div class="col-lg-2 col-md-2 col-sm-2 col-2 singdimg">
+                        <img onclick="clickImgdetail(this)" src="image/sp1.webp" class="imgldetail imgactive">
+                    </div>
+                </div>
+                <div class="thongtinthemsp">
+                    <p class="lbthongtinchitiet"><i class="fa fa-info-circle"></i>Thông tin chi tiết</p>
+                    <hr>
+                    <table class="table table-borderless tablechitiettt">
+                        <tr><th>Mã sản phẩm:</th><td id="masp"></td></tr>
+                        <tr><th>Tác giả:</th><td id="tacgia"></td></tr>
+                        <tr><th>Số trang:</th><td id="sotrang"></td></tr>
+                        <tr><th>Nhà xuất bản:</th><td id="nhasx"></td></tr>
+                        <tr><th>Năm xuất bản:</th><td id="namsx"></td></tr>
+                        <tr><th>Khối lượng:</th><td id="khoiluong"></td></tr>
+                        <tr><th>Kích thước:</th><td id="kichthuoc"></td></tr>
+                        <tr><th>Hình thức:</th><td id="hinhthuc"></td></tr>
+                        <tr><th>Danh mục:</th><td id="danhmuc"></td></tr>
+                    </table>
+                </div>
+            </div>
+            <div class="col-lg-5 col-md-7 col-sm-12 col-12">
+                <span class="detailnamepro" id="detailnamepro">name</span>
+                <div class="blockdetailpro">
+                    <span class="codepro" id="codepro">STM6099-DEN</span>
+                    <span class="quansale" id="quansale">Đã bán 5.0K</span>
+                </div>
+                <p class="pricedetail"><span id="pricedetail"></span> <span id="giacusp" class="giaspcu"></span></p>
+                <div class="addcartdetail">
+                    <button onclick="upAndDownDetail(-1)" class="cartbtn"> - </button>
+                    <input id="inputslcart" class="inputslcart" value="1">
+                    <button onclick="upAndDownDetail(1)" class="cartbtn"> + </button></div>
+                <div class="btndetail">
+                    <button onclick="addCart(1)" id="btnaddcart" class="btnaddcart"><i class="fa fa-shopping-cart"></i> Thêm giỏ hàng</button>
+                    <button onclick="addCart(0)" class="btnmuangay">Mua ngay</button>
+                </div>
+
+                <p class="titledes">Mô tả sản phẩm</p>
+                <div id="descriptiondetail">
+                </div>
+                <span onclick="readmore()" class="readmore" id="btnreadmore">Đọc thêm mô tả</span>
+            </div>
+            <div class="col-lg-4 col-md-12 col-sm-12 col-12">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-6 align-items-center">
+                        <div class="d-flex flex-column align-items-center">
+                            <img src="image/free.svg">
+                        </div>
+                        <div class="titledetail">Miễn phí vận chuyển<br>với mọi đơn hàng trên toàn quốc</div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-6 align-items-center">
+                        <div class="d-flex flex-column align-items-center">
+                            <img src="image/freedt.svg">
+                        </div>
+                        <div class="titledetail">Miễn phí đổi trả trong 15 ngày nếu có lỗi sản phẩm</div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-6 align-items-center">
+                        <div class="d-flex flex-column align-items-center">
+                            <img src="image/pay.svg">
+                        </div>
+                        <div class="titledetail">Đa dạng phương thức thanh toán<br>(Momo, COD)</div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-6 align-items-center">
+                        <div class="d-flex flex-column align-items-center">
+                            <img src="image/vc.svg">
+                        </div>
+                        <div class="titledetail">Vận chuyển nhanh <br>từ 3 đến 7 ngày</div>
+                    </div>
+
+                    <p class="titledes">Gợi ý sản phẩm</p>
+                    <div class="row" id="listProductGy">
+                        <!-- <div class="col-lg-20p col-md-3 col-sm-6 col-6">
+                            <a href="" class="linkpro">
+                                <div class="singlepro">
+                                    <div class="productsold"><span class="reviewsp">Đã bán: 250</span></div>
+                                    <img src="image/sp1.webp" class="imgpro">
+                                    <span class="proname">Women's Casual Pants With Waist Belt</span>
+                                    <span class="proprice">499.000đ</span>
+                                    <div class="listimgpro">
+                                        <div class="divimgsmpro"><img class="imgsmpro" src="image/sp2.webp"></div>
+                                        <div class="divimgsmpro"><img class="imgsmpro" src="image/sp3.webp"></div>
+                                        <div class="divimgsmpro"><img class="imgsmpro" src="image/sp4.webp"></div>
+                                        <div class="divimgsmpro"><img class="imgsmpro" src="image/sp5.webp"></div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12 motasp">
+                <!-- <p class="titledes">Mô tả sản phẩm</p>
+                <div id="descriptiondetail">
+                </div>
+                <span onclick="readmore()" class="readmore">Đọc thêm mô tả</span> -->
+            </div>
+            <div class="col-lg-7 col-md-8 col-sm-12 col-12">
+                <p class="titledes">Phản hổi</p>
+                <div class="listcautlct" id="listcautlct">
+                    <div class="singlectlct">
+                        <div class="row">
+                            <div class="col-11">
+                                <div class="d-flex nguoidangctl">
+                                    <img class="avtuserdangctl" src="image/avatar.webp">
+                                    <span class="usernamedangctl">Username</span>
+                                    <span class="ngaytraloi">16-07-2023</span>
+                                </div>
+                                <div class="contentctlct">Mua với giá dùng thử 269K thấy sản phẩm năm nay chất lượng đã cải tiến hơn nhiều, giao hàng cũng nhanh hơn. đặt ở web nên yên tâm không gặp lừa đảo hàng nhái vì mình bị gặp mấy lần rồi. cảm ơn shop!</div>
+                                <div class="listimgcontent">
+                                    <img src="image/sp1.webp">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-12 col-12" id="mycomment">
+                    <div class="liststar" id="liststar">
+                        <span onclick="loadStar(0)" class="fa fa-star checkedstar"></span>
+                        <span onclick="loadStar(1)" class="fa fa-star checkedstar"></span>
+                        <span onclick="loadStar(2)" class="fa fa-star checkedstar"></span>
+                        <span onclick="loadStar(3)" class="fa fa-star checkedstar"></span>
+                        <span onclick="loadStar(4)" class="fa fa-star checkedstar"></span>
+                    </div>
+
+                    <label id="titlerep" class="lb-chon-danhmuc">Bình luận của bạn</label>
+                    <textarea id="noidungbl" class="form-control"></textarea>
+                    <button onclick="saveComment()" class="btn btn-primary form-control">Binh luận</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="footer"></div>
+
+
+</body>
+<script>
+    function setFile() {
+        var lis = document.getElementById("choosefilecmt").files.length;
+        if (lis > 3) {
+            document.getElementById("errorquan").style.display = 'block'
+            document.getElementById("slfile").innerHTML = ''
+        }
+        if (lis > 0 && lis < 4) {
+            document.getElementById("errorquan").style.display = 'none'
+            document.getElementById("slfile").innerHTML = 'Bạn đã chọn ' + lis + ' ảnh'
+        }
+    }
+
+    var check = 1;
+
+    function readmore() {
+        if (check % 2 != 0) {
+            document.getElementById("descriptiondetail").style.height = 'auto'
+            document.getElementById("btnreadmore").innerHTML = 'Thu gọn mô tả'
+        } else {
+            document.getElementById("descriptiondetail").style.height = '300px'
+            document.getElementById("btnreadmore").innerHTML = 'Đọc thêm mô tả'
+        }
+        check++;
+    }
+</script>
+
+</html>

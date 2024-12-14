@@ -1,0 +1,676 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="image/logo.ico">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg==" crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw==" crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+    <link href='https://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.2/js/toastr.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g==" crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script src="js/menu.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-messaging.js"></script>
+    <script>
+        window.onload = function() {
+            loadMenu();
+        }
+    </script>
+</head>
+
+<body>
+    <div id="menu" style="background-image: url(image/backgroundmenu.webp);">
+
+    </div>
+
+    <div class="content">
+   
+        <div class="container container--medium">
+            <div class="container container--medium">
+                <div class="grid grid--mobile-rev">
+                    <div class="grid__column mobile--one-whole five-twelfths"><div class="cs-story__image"><img src="https://file.hstatic.net/1000061481/file/thong_bao-14_b154dc8c4a7b4e69b2d8eb17d7f8a2d1.jpg" alt="image"><span class="cs-services__alt"> Hệ thống cửa hàng Neymarsport</span></div></div>
+                    <div class="grid__column mobile--one-whole seven-twelfths">
+                        <div class="cs-story__content">
+                            <h2 class="cs-story__heading">TẠI SAO KHÁCH HÀNG YÊN TÂM KHI <br class="mobile--hidden"> LỰA CHỌN NEYMARSPORT ?</h2>
+                            <div class="ca-story__description"><p style="text-align: justify;">✔Chúng tôi có 6 CHI NHÁNH với đa dạng mẫu mã và nằm ở những vị trí trung tâm, rất thuận tiện cho khách hàng đến trải nghiệm và mua sắm.&nbsp;</p><p style="text-align: justify;">✔ Cam kết các sản phẩm chính hãng 100% được nhập khẩu Fullbox từ các nhà phân phối chính hãng tại Việt Nam – Quý khách có thể kiểm tra tem, nhãn trên sản phẩm, và tham khảo ý kiến mọi người trước khi quyết định mua hàng tại NEYMARSPORT.COM&nbsp;</p><p style="text-align: justify;">✔ Chính sách <span style="color:#e74c3c;"><strong>BỒI THƯỜNG GẤP 10 LẦN NẾU SẢN PHẨM KHÔNG PHẢI CHÍNH HÃNG</strong></span>. Các sản phẩm đều được bảo hành tuyệt đối trong suốt thời gian sử dụng theo chính sách của từng nhà phân phối.&nbsp;</p><p style="text-align: justify;">✔ NEYMARSPORT được nhiều khách hàng là tuyển thủ Quốc gia, cầu thủ chuyên nghiệp, ca sỹ, người nổi tiếng...tin tưởng lựa chọn .</p></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>	<section class="cs-services">
+            <div class="container container--medium">
+                <h2 class="cs-services__heading">ĐỊNH HƯỚNG MÔ HÌNH<br>NEYMARSPORT ĐANG HƯỚNG TỚI</h2>
+                <div id="services1" class="grid grid--aligned-center grid--two-columns grid--doubling">
+                    <div class="grid__column">
+    <h3 class="cs-services__title">#1. VỚI KHÁCH HÀNG: </h3>					<div class="cs-services__description"><p style="text-align: justify;"><span style="font-size:16px;">Luôn cập nhật những mẫu mã giày bóng đá chính hãng mới nhất và những chính sách khuyến mãi – ưu đãi giảm giá hấp dẫn để đáp ứng được nhu cầu của các anh em đam mê môn thể thao vua.</span></p><p style="text-align: justify;"><span style="font-size:16px;">Xây dựng chính sách bảo hành tuyệt đối với sản phẩm và đổi hàng trong vòng 7-14 ngày, thanh toán tiện lợi thông qua dịch vụ thử giày tại nhà để anh em yên tâm khi đặt hàng tại Neymarsport&nbsp;</span></p><p style="text-align: justify;"><span style="font-size:16px;">Nâng cao nghiệp vụ của đội ngũ NVBH, CSKH nhằm tư vấn cho khách hàng một cách chuyên nghiệp và kỹ càng nhất.</span></p><p style="text-align: justify;"><span style="font-size:16px;">Lấy sự hài lòng của khách hàng chính là mục tiêu to lớn nhất, là thước đo thành công của một thương hiệu.&nbsp;</span></p></div>
+                    </div>
+                    <div class="grid__column">
+                        <div class="cs-services__image"><img src="https://file.hstatic.net/1000061481/file/thong_bao-14_68c8edea53474baaa4562a96f79f6cb4.jpg" alt="image">
+    <span class="cs-services__alt">Ảnh khách hàng mua sắm tại Neymarsport CN Gò Vấp</span>					</div>
+                    </div>
+                </div>			<div id="services2" class="grid grid--aligned-center grid--two-columns grid--doubling">
+                    <div class="grid__column">
+    <h3 class="cs-services__title">#2. VỚI NHÂN VIÊN: </h3>					<div class="cs-services__description"><p><span style="font-size:16px;">Xây dựng chính sách lương thưởng hấp dẫn để mỗi nhân viên của NEYMARSPORT phát huy hết điểm mạnh và năng lực của bản thân.&nbsp;<br>Xây dựng văn hoá doanh nghiệp cởi mở, năng động giúp các bạn luôn tìm thấy niềm vui và hạnh phúc trong công việc.</span></p><p><span style="font-size:16px;">Luôn tạo cơ hội cho các bạn trẻ học hỏi và cơ hội được gắn bó lâu dài với NEYMARSPORT</span></p></div>
+                    </div>
+                    <div class="grid__column">
+                        <div class="cs-services__image"><img src="https://file.hstatic.net/1000061481/file/nms00558_d8549269e7b741a4bfa564c324fef9d7.jpg" alt="image">
+    <span class="cs-services__alt">Ảnh bộ phận CSKH của Neymarsport</span>					</div>
+                    </div>
+                </div>			<div id="services3" class="grid grid--aligned-center grid--two-columns grid--doubling">
+                    <div class="grid__column">
+    <h3 class="cs-services__title">#3. VỚI ĐỐI TÁC: </h3>					<div class="cs-services__description"><p><span style="font-size:16px;">NEYMARSPORT coi sự tôn trọng và uy tín là cốt lõi của một mối quan hệ hợp tác bền vững. &nbsp;</span></p><p><span style="font-size:16px;">Chúng tôi luôn cởi mở và sẵn sàng hợp tác với các đối tác tiềm năng nhằm tìm kiếm một mối quan hệ WIN - WIN.&nbsp;</span></p><p><span style="font-size:16px;">Trong tương lai gần NEYMARSPORT mong muốn tìm thấy các đối tác phù hợp để nhân rộng mô hình bán lẻ trên toàn quốc.&nbsp;</span></p></div>
+                    </div>
+                    <div class="grid__column">
+                        <div class="cs-services__image"><img src="https://file.hstatic.net/1000061481/file/logo_brand-15_d666023e0cfd4fdf9efd5af15074cf6c.jpg" alt="image">
+    <span class="cs-services__alt">Logo các đối tác của Neymarsport</span>					</div>
+                    </div>
+                </div>			<div id="services4" class="grid grid--aligned-center grid--two-columns grid--doubling">
+                    <div class="grid__column">
+    <h3 class="cs-services__title">#4. VỚI CỘNG ĐỒNG: </h3>					<div class="cs-services__description"><p style="text-align: justify;"><span style="font-size:16px;">NEYMARSPORT luôn quan tâm đến sự phát triển của bóng đá Việt Nam. Hàng năm chúng tôi vẫn dành một khoản ngân sách để đồng hành cùng các giải bóng đá phong trào, các hoạt động bóng đá cộng đồng nhằm chung tay phát triển cho nền bóng đá nước nhà.&nbsp;</span></p></div>
+                    </div>
+                    <div class="grid__column">
+                        <div class="cs-services__image"><img src="https://file.hstatic.net/1000061481/file/thong_bao-14-14_c1798331e8b44b28ae583cf4e0ebd078.jpg" alt="image">
+    <span class="cs-services__alt">Ảnh các giải đấu Neymarsport tài trợ</span>					</div>
+                    </div>
+                </div>		</div>
+        </section>
+        <section class="cs-thanks"><div class="container container--medium"><h2 class="cs-thanks__heading">Cảm ơn bạn đã lựa chọn Neymarsport đồng hành cùng mình trên sân bóng.</h2> <span>“</span></div></section><section class="cs-more">
+        </section></main>
+    
+    <style>
+    #page-story {
+        font-size: 14px;
+            margin-bottom: 30px;
+    }
+    
+        @media screen and (min-width: 1360px){
+            #page-story .container {
+                width: 1300px;
+            }
+        }
+        .grid__column {padding: 10px;}
+    .cs-banner {
+        position: relative
+    }
+    
+    .cs-banner__image {
+        position: relative
+    }
+    
+    .cs-banner__image::before {
+        content: "";
+        display: block;
+        width: 100%;
+        height: 0;
+        padding-top: 38.13333%
+    }
+    
+    @media screen and (max-width: 961px) {
+        .cs-banner__image::before {
+            height: 400px
+        }
+    }
+    
+    .cs-banner__image img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        -o-object-fit: cover;
+        object-fit: cover
+    }
+    
+    .cs-banner__image::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: -webkit-gradient(linear, left bottom, left top, color-stop(-6.11%, #000), color-stop(124.54%, rgba(0, 0, 0, 0)));
+        background: linear-gradient(0deg, #000 -6.11%, rgba(0, 0, 0, 0) 124.54%)
+    }
+    
+    .cs-banner__content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -webkit-transform: translate3d(-50%, -50%, 0);
+        transform: translate3d(-50%, -50%, 0);
+        text-align: center;
+        width: 65%;
+    }
+    
+    @media screen and (max-width: 961px) {
+        .cs-banner__content {
+            width: 100%;
+            padding-left: 25px;
+            padding-right: 25px
+        }
+    }
+    
+    .cs-banner__heading {
+        color: #fff;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 54px;
+        line-height: 82px;
+        text-align: center
+    }
+        .cs-banner__heading * {line-height: 82px;}
+    @media screen and (max-width: 961px) {
+        .cs-banner__heading {
+            font-size: 32px;
+            line-height: 1.25em
+        }
+        .cs-banner__heading *{line-height: 1.5;}
+    }
+    
+    .cs-banner__description {
+        font-style: normal;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 23px;
+        text-align: center;
+        color: #fff
+    }
+    
+    @media screen and (max-width: 961px) {
+        .cs-banner__description {
+            line-height: 1.5em;
+            font-size: 14px
+        }
+    }
+    
+    .cs-banner__description {
+        color: #fff;
+        font-size: 20px
+    }
+    .cs-about {
+        padding-top: 30px
+    }
+    
+    @media screen and (max-width: 961px) {
+        .cs-about {
+            padding-top: 15px;
+            padding-bottom: 30px
+        }
+    }
+    
+    .cs-about__heading {
+        font-style: normal;
+        font-weight: 700;
+        font-size: 40px;
+        line-height: 51px;
+        color: #000000
+    }
+    
+    @media screen and (max-width: 961px) {
+        .cs-about__heading {
+            font-size: 20px;
+            font-weight: bold;
+            line-height: 1.25em;
+            margin-bottom: 0
+        }
+    
+        .cs-about__heading br {
+            display: none
+        }
+    }
+    
+    .cs-about__heading--mobile {
+        margin-top: 100px
+    }
+    
+    @media screen and (max-width: 961px) {
+        .cs-about__heading--mobile {
+            margin-top: 0;
+            margin-bottom: 15px
+        }
+    }
+    
+    .cs-about__description {
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 1.5em;
+        text-align: justify;
+        color: #231f20;
+    }
+        .cs-about__description p{
+            margin-top: 14px;
+            margin-bottom: 14px;color: #231f20;
+        }
+    @media screen and (max-width: 961px) {
+        .cs-about__description p {
+            margin-top: 0
+        }
+    }
+    
+    .cs-about__image {
+        position: relative;
+        max-width: 330px
+    }
+    
+    @media screen and (max-width: 767px) {
+        .cs-about__image {
+            display: none
+        }
+    }
+    
+    /*.cs-about__image img {
+        position: absolute;
+        max-width: 130%;
+        width: 130%;
+        right: 0
+    }*/
+    
+    @media screen and (max-width: 961px) {
+        .cs-about__image img {
+            width: 100%
+        }
+    }
+    
+    .cs-about__title {
+        text-decoration: underline;
+        font-weight: bold !important
+    }
+    
+    .cs-about__list {
+        display: block;
+        padding-left: 40px;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 1.25em;
+        text-align: justify;
+        position: relative
+    }
+    
+    @media screen and (max-width: 961px) {
+        .cs-about__list {
+            font-size: 14px;
+            padding-left: 30px
+        }
+    }
+    
+    @media screen and (max-width: 961px) {
+        .cs-about__list p {
+            margin: 0
+        }
+    }
+    
+    .cs-about__list p span {
+        font-weight: normal
+    }
+    
+    .cs-about__list:hover {
+        color: #000
+    }
+    
+    .cs-about__list:hover .cs-about__list-number::before {
+        opacity: 1
+    }
+    
+    .cs-about__list-number {
+        position: absolute;
+        left: 0
+    }
+    
+    .cs-about__list-number::before {
+        content: "";
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background-color: #000;
+        opacity: 0;
+        -webkit-transition: all .3s;
+        transition: all .3s
+    }
+    
+    .cs-caption {
+        background-color: #000000;
+        padding-top: 50px;
+        padding-bottom: 50px;
+        text-align: center
+    }
+    
+    @media screen and (max-width: 961px) {
+        .cs-caption {
+            padding-top: 30px;
+            padding-bottom: 30px
+        }
+    }
+    
+    .cs-caption__heading {
+        color: #f9f86c;
+        margin-bottom: 30px;
+        font-size: 24px;
+        line-height: 36px;
+    }
+    
+    @media screen and (max-width: 961px) {
+        .cs-caption__heading {
+            font-size: 24px;
+            margin-bottom: 15px
+        }
+    
+        .cs-caption__heading br {
+            display: none
+        }
+    }
+    
+    .cs-caption__heading span {
+        color: #fff
+    }
+    
+    .cs-caption__author {
+        color: #e5e5e5;
+        font-size: 14px
+    }
+    
+    @media screen and (max-width: 961px) {
+        .cs-caption__author {
+            font-size: 12px
+        }
+    }
+    
+    .cs-services__heading {
+        font-style: normal;
+        font-weight: 600;
+        font-size: 30px;
+        line-height: 40px;
+        color: #f1dc68;
+    }
+    
+    @media screen and (max-width: 961px) {
+        .cs-services__heading {
+            font-size: 24px;
+            line-height: 1.5
+        }
+    }
+    
+    .cs-services__title {
+        font-style: normal;
+        font-weight: 500;
+        font-size: 30px;
+        line-height: 35px
+    }
+    
+    @media screen and (max-width: 961px) {
+        .cs-services__title {
+            font-size: 20px;
+            margin-bottom: 0
+        }
+    }
+    
+    .cs-services__description {
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 23px
+    }
+    
+    @media screen and (max-width: 961px) {
+        .cs-services__description p {
+            margin-top: 0
+        }
+    
+        .cs-services__description p:last-of-type {
+            margin-bottom: 0
+        }
+    }
+    
+    .cs-services__img {
+        width: 100%
+    }
+    
+    .cs-services__img img {
+        width: 100%
+    }
+    
+    .cs-services__image img {
+        width: 100%
+    }
+    
+    .cs-services__alt {
+        display: block;
+        margin-top: 10px;
+        text-decoration: underline
+    }
+    
+    .cs-services .grid>.grid__column {
+        padding-top: 35px;
+        padding-bottom: 35px
+    }
+    
+    @media screen and (max-width: 961px) {
+        .cs-services .grid>.grid__column {
+            padding-top: 10px;
+            padding-bottom: 10px
+        }
+    }
+    
+    .cs-story {
+        margin-bottom: 55px
+    }
+    
+    .cs-story__image {
+        -webkit-box-flex: 1;
+        -ms-flex: 1;
+        flex: 1;
+        height: 100%
+    }
+    
+    .cs-story__image img {
+        width: 100%;
+        height: 100%;
+        -o-object-fit: cover;
+        object-fit: cover;
+        border-radius: 16px
+    }
+    
+    .cs-story__content {
+        background-color: #f6f6f6;
+        padding: 25px;
+        border-radius: 16px;
+        -webkit-box-flex: 1;
+        -ms-flex: 1;
+        flex: 1
+    }
+    
+    .cs-story__heading {
+        font-weight: 500;
+        font-size: 30px;
+        line-height: 35px;
+        color: #f1dc68;
+        position: relative;
+        padding-bottom: 15px
+    }
+    
+    .cs-story__heading::before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 64px;
+        height: 4px;
+        background-color: #f1dc68;
+    }
+    
+    .cs-thanks {
+        background-color: #f9f86c;
+        text-align: center;
+        padding-top: 30px;
+        padding-bottom: 30px
+    }
+    
+    @media screen and (max-width: 961px) {
+        .cs-thanks {
+            margin-top: 20px
+        }
+    }
+    
+    .cs-thanks__heading {
+        font-style: normal;
+        font-weight: 600;
+        font-size: 30px;
+        line-height: 40px;
+        text-align: center;
+        color: #000000
+    }
+    
+    @media screen and (max-width: 961px) {
+        .cs-thanks__heading {
+            font-size: 20px;
+            line-height: 1.5em
+        }
+    
+        .cs-thanks__heading br {
+            display: none
+        }
+    }
+    
+    .cs-thanks span {
+        color: #fff;
+        opacity: 0.6;
+        font-size: 110px;
+        line-height: 50px;
+        display: block;
+        -webkit-transform: translateY(-50%) rotate(180deg);
+        transform: translateY(-50%) rotate(180deg)
+    }
+    
+    @media screen and (max-width: 961px) {
+        .cs-thanks span {
+            font-size: 80px;
+            line-height: 40px
+        }
+    }
+    
+    .cs-more {
+        font-weight: 600;
+        font-size: 20px;
+        line-height: 30px;
+        text-align: center;
+        color: #000000;
+        padding-top: 25px;
+        padding-bottom: 25px
+    }
+    
+    @media screen and (max-width: 961px) {
+        .cs-more {
+            font-size: 16px
+        }
+    }
+    
+    .cs-more a {
+        font-weight: normal;
+        text-decoration: underline
+    }
+    
+    @media screen and (max-width: 961px) {
+        .grid--mobile-rev {
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: reverse;
+            -ms-flex-flow: wrap-reverse;
+            flex-flow: wrap-reverse
+        }
+    }
+    
+    /*# sourceMappingURL=style.min.css.map */
+    
+    @media screen and (max-width: 768px) {
+        .cs-story__image {
+            height: auto;
+        }
+    }
+        @media (max-width: 768px){
+    .mobile--visible {
+        display: block!important;
+    }
+        }
+        .grid {
+        display: flex;
+        display: -webkit-flex;
+        -moz-flex-direction: row;
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin-left: -9px;
+        margin-right: -9px;
+        padding: 0;
+        position: relative;
+        float: none;
+    }
+        .grid__column {
+        position: relative;
+        box-sizing: border-box;
+        min-height: 1px;
+        vertical-align: top;
+        margin-left: 0!important;
+        margin-right: 0!important;
+        padding: 9px;
+    }
+        
+        .five-twelfths {
+        width: 41.666%;
+    }
+        .seven-twelfths {
+        width: 58.333%;
+    }
+        .grid .grid__column {
+        padding: 10px;
+    }
+        .grid--aligned-center {
+        justify-content: center;
+        -moz-align-items: center;
+        align-items: center;
+    }
+        .grid--two-columns>.grid__column {
+        width: 50%;
+    }
+            .grid--three-columns>.grid__column {
+        width: 33.33333333%;
+    }
+    @media (max-width: 768px){
+    .mobile--one-whole {
+        width: 100%;
+    }
+        .mobile--hidden {
+        display: none!important;
+    }
+        .grid--doubling.grid--five-columns>.grid__column, .grid--doubling.grid--four-columns>.grid__column, .grid--doubling.grid--three-columns>.grid__column, .grid--doubling.grid--two-columns>.grid__column {
+        width: 100%;
+    }
+        }
+    </style>
+    
+    
+    
+                </section>
+                
+    
+    <span id="social-cart-num" class="hide"></span>
+    
+
+    <div id="footer"></div>
+</body>
+<script src="js/app.js"></script>
+</html>
