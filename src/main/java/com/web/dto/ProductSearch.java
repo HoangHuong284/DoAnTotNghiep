@@ -13,4 +13,5 @@ public class ProductSearch {
     private List<Long> categoryIds = new ArrayList<>();
     Double minPrice;
     Double maxPrice;
+    String search;
 }

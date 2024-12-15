@@ -14,17 +14,20 @@ public class ProductSpecification implements Specification<Product> {
     private List<Long> categoryIds;
     private Double minPrice;
     private Double maxPrice;
-
-    public ProductSpecification(List<Long> categoryIds, Double minPrice, Double maxPrice) {
+    private String search;
+    public ProductSpecification(String search,List<Long> categoryIds, Double minPrice, Double maxPrice) {
         this.categoryIds = categoryIds;
         this.minPrice = minPrice;
         this.maxPrice = maxPrice;
+        this.search = search;
     }
 
     @Override
     public Predicate toPredicate(Root<Product> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
         Predicate predicate = cb.conjunction();
-
+        if(search != null && !search.isEmpty()){
+            predicate = cb.and(predicate, cb.like(root.get("name"), "%" + search + "%"));
+        }
         if (categoryIds != null && !categoryIds.isEmpty()) {
             predicate = cb.and(predicate, root.get("category").get("id").in(categoryIds));
         }

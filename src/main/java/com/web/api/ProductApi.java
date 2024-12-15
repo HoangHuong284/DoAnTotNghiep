@@ -59,7 +59,8 @@ public class ProductApi {
 
     @PostMapping("/public/search-full")
     public Page<Product> getProductsByCriteria(@RequestBody ProductSearch search, Pageable pageable) {
-        return productService.findProductsByCriteria(search.getCategoryIds(), search.getMinPrice(), search.getMaxPrice(), pageable);
+
+        return productService.findProductsByCriteria(search.getSearch(),search.getCategoryIds(), search.getMinPrice(), search.getMaxPrice(), pageable);
     }
 
     @GetMapping("/public/search-by-param")

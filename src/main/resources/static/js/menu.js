@@ -12,7 +12,7 @@ async function loadMenu() {
     if (token == null) {
         dn = `<a href="login" class="pointermenu gvs"><i class="fa fa-user"> Đăng ký/ Đăng nhập</i></a>`
     }
-    var menu =
+    var menuContent =
         `<div id="topmenu" class="topmenu container-fluid row">
         <div class="col-sm-2"><a href="index" class="linktop"><img style="width: 160px;" src="image/logologin.png"></a></div>
         <div class="col-sm-6">
@@ -25,8 +25,8 @@ async function loadMenu() {
                             <div class="row">
                                 <div class="col-2"><img class="imgprosearch" src="image/pro.webp"></div>
                                 <div class="col-10">
-                                    <span class="tenspsearch">Chân váy nữ dáng A</span><br>
-                                    <span class="tenspsearch">214.500đ</span>
+                                    <span class="tenspsearch"></span><br>
+                                    <span class="tenspsearch"></span>
                                 </div>
                             </div>
                         </div></a>
@@ -38,7 +38,7 @@ async function loadMenu() {
         <div class="col-sm-4 addrmenu">
             <a href="" class="amens pointermenu"><i class="amens fa fa-info-circle gvs"> Về chúng tôi</i></a>
             <a href="" class="amens pointermenu"><i class="amens fa fa-map-marker gvs"> Xem địa chỉ</i></a>
-            <a href="" class="amens pointermenu"><i class="amens fa fa-phone"> 0338256771</i></a>
+            <a href="" class="amens pointermenu"><i class="amens fa fa-phone"> 19992570</i></a>
         </div>
     </div>
     <nav class="navbar navbar-expand-lg">
@@ -62,7 +62,9 @@ async function loadMenu() {
             </div>
         </div>
     </nav>`
-    document.getElementById("menu").innerHTML = menu
+
+    // hàm insert html
+    document.getElementById("menu").innerHTML = menuContent
     loadCategoryMenu();
     loadCartMenu();
     try { loadFooter(); } catch (error) {}
@@ -91,6 +93,8 @@ async function searchMenu() {
     }
     var url = 'http://localhost:8080/api/product/public/search-by-param?page=0&size=50&search=' + texts;
     const response = await fetch(url, {});
+    // respone : object {status: ok/fail , json: dữ liệu}
+
     var result = await response.json();
     var list = result.content;
     var main = '';

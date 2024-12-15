@@ -103,8 +103,8 @@ public class ProductService {
     }
 
 
-    public Page<Product> findProductsByCriteria(List<Long> categoryIds, Double minPrice, Double maxPrice, Pageable pageable) {
-        ProductSpecification spec = new ProductSpecification(categoryIds, minPrice, maxPrice);
+    public Page<Product> findProductsByCriteria(String search,List<Long> categoryIds, Double minPrice, Double maxPrice, Pageable pageable) {
+        ProductSpecification spec = new ProductSpecification(search,categoryIds, minPrice, maxPrice);
         return productRepository.findAll(spec, pageable);
     }
 
