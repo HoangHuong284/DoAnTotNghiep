@@ -34,3 +34,5 @@ build/
 
 /src/main/resources/*.properties
 
+/src/main/resources/templates/admin/addproduct.html
+/src/main/resources/templates/admin/addblog.html
