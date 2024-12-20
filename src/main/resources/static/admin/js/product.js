@@ -9,6 +9,7 @@ async function loadProduct() {
         method: 'GET'
     });
     var list = await response.json();
+    console.log(list);
     var main = '';
     for (i = 0; i < list.length; i++) {
         main += `<tr>
@@ -28,7 +29,13 @@ async function loadProduct() {
                 </tr>`
     }
     document.getElementById("listproduct").innerHTML = main
-    $('#example').DataTable();
+    $('#example').DataTable(
+    {
+                    "columnDefs": [
+                        { "targets": [1, 6, 7, 8, 9], "searchable": false } // Tắt tìm kiếm cho các cột Ảnh, Ngày tạo, Số lượng bán, Số lượng tồn kho, Hành động
+                    ]
+                }
+    );
 }
 
 async function loadAProduct() {

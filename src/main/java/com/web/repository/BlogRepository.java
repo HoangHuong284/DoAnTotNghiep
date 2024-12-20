@@ -13,8 +13,11 @@ public interface BlogRepository extends JpaRepository<Blog,Long> {
 
     @Modifying
     @Transactional
-    @Query("update Blog b set b.primaryBlog = false")
-    int unSetPrimary();
+//    @Query("update Blog b set b.primaryBlog = false")
+//    default int unSetPrimary() {
+//        int i = 0;
+//        return i;
+//    }
 
     @Query(value = "select * from blog b order by b.id desc limit 1", nativeQuery = true)
     public Optional<Blog> newBlog();

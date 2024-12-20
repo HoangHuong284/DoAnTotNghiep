@@ -34,24 +34,18 @@
             loadMenu();
             await loadCategorySub();
             searchFull(0);
-            loadBanner();
         }
     </script>
 </head>
 
 <body>
-    <div id="menu" style="background-image: url(image/backgroundmenu.webp);">
-
-    </div>
+    <div id="menu" style="background-image: url(image/backgroundmenu.webp);"></div>
 
     <div class="content">
-<!--        <div class="bannerhot1">-->
-
-<!--        </div>-->
         <div class="row">
             <div class="col-lg-3 col-md-3"></div>
             <div class="col-lg-9 col-md-9 filterdiv">
-                <span class="slsanpham">Có <span id="slsp">3</span> sản phẩm được tìm thấy</span>
+                <span class="slsanpham">Có <span id="slsp"></span> sản phẩm được tìm thấy</span>
                 <span data-bs-toggle="modal" data-bs-target="#modalfilter" class="filtersp"><i class="fa fa-filter"></i> Bộ lọc</span>
                 <select onchange="searchFull(0)" id="sortpro" class="form-control">
                     <option value="id,asc">Mới nhất</option>
@@ -76,13 +70,13 @@
             </div>
             <div class="col-lg-9 col-md-9">
                 <div class="row" id="listproductpro">
-                    <!-- <div class="col-lg-3 col-md-3 col-sm-6 col-6">
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-6">
                         <a href="" class="linkpro">
                             <div class="singlepro">
-                                <div class="productsold"><span class="reviewsp">Đã bán: 250</span></div>
+                                <div class="productsold"><span class="reviewsp"></span></div>
                                 <img src="image/sp1.webp" class="imgpro">
-                                <span class="proname">Women's Casual Pants With Waist Belt</span>
-                                <span class="proprice">499.000đ</span>
+                                <span class="proname"></span>
+                                <span class="proprice"></span>
                                 <div class="listimgpro">
                                     <div class="divimgsmpro"><img class="imgsmpro" src="image/sp2.webp"></div>
                                     <div class="divimgsmpro"><img class="imgsmpro" src="image/sp3.webp"></div>
@@ -91,7 +85,7 @@
                                 </div>
                             </div>
                         </a>
-                    </div> -->
+                    </div>
                 </div>
                 <nav aria-label="Page navigation example" style="margin-top: 30px;">
                     <ul class="pagination" id="pageable">

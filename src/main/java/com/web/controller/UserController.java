@@ -59,7 +59,8 @@ public class UserController {
     }
 
     @RequestMapping(value = {"/index"}, method = RequestMethod.GET)
-    public String index() {
+    public String index()
+    {
         return "user/index.html";
     }
 

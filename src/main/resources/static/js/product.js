@@ -247,12 +247,14 @@ async function searchFull(page) {
   var min_price = document.getElementById("min_price").value;
   var max_price = document.getElementById("max_price").value;
   var sort = document.getElementById("sortpro").value;
-  const trademarkCheckboxes = document.querySelectorAll(
-    'input[name="trademarkIds"]:checked'
-  );
-  const trademarkIds = Array.from(trademarkCheckboxes).map(
-    (checkbox) => checkbox.value
-  );
+  console.log("This is sortpro value :") ; console.log(sort);
+
+//  const trademarkCheckboxes = document.querySelectorAll(
+//    'input[name="trademarkIds"]:checked'
+//  );
+//  const trademarkIds = Array.from(trademarkCheckboxes).map(
+//    (checkbox) => checkbox.value
+//  );
 
   const categoryCheckboxes = document.querySelectorAll(
     'input[name="categoryIds"]:checked'
@@ -270,7 +272,7 @@ async function searchFull(page) {
     sort;
   var obj = {
     categoryIds: categoryIds,
-    trademarkIds: trademarkIds,
+//    trademarkIds: trademarkIds,
     minPrice: min_price,
     maxPrice: max_price,
     search

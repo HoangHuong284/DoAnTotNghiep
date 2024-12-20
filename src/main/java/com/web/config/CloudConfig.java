@@ -17,9 +17,9 @@ public class CloudConfig {
     public Cloudinary cloudinaryConfigs() {
         Cloudinary cloudinary = null;
         Map config = new HashMap();
-        config.put("cloud_name", "dxqh3xpza");
-        config.put("api_key", "159365789567286");
-        config.put("api_secret", "jVbDdyDleglBDRE2UIvjKebvWSM");
+        config.put("cloud_name", "dccekeplx");
+        config.put("api_key", "581961351493346");
+        config.put("api_secret", "-YF78yCCqWVxbAleF0jXOylj2gQ");
         cloudinary = new Cloudinary(config);
         return cloudinary;
     }

@@ -72,12 +72,12 @@ public class ProductService {
 
     
     public void delete(Long idProduct) {
-        Optional<Product> exist = productRepository.findById(idProduct);
-        if(exist.isEmpty()){
+        Optional<Product> book = productRepository.findById(idProduct);
+        if(book.isEmpty()){
             throw new MessageException("product not found");
         }
         if(invoiceDetailRepository.countByProduct(idProduct) > 0){
-            exist.get().setDeleted(true);
+            book.get().setDeleted(true);
         }
         else{
             productRepository.deleteById(idProduct);

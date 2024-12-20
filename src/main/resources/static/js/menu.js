@@ -49,7 +49,7 @@ async function loadMenu() {
             <a class="navbar-brand navbar-toggler" href="index"><img style="width: 140px;" src="image/logologin.png"></a>
             <span>
                 <i data-bs-toggle="modal" data-bs-target="#modalsearch" class="fa fa-search navbar-toggler"></i>
-                <a href="cart" class="pointermenu"><i class="fa fa-shopping-bag navbar-toggler"> <span id="slcartmenusm" class="slcartmenusm">0</span></i></a>
+                <a href="cart" class="pointermenu"><i class="fa fa-shopping-bag navbar-toggler"> <span id="slcartmenusm" class="slcartmenusm"></span></i></a>
             </span>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0" id="mainmenut">
@@ -75,6 +75,8 @@ async function loadCategoryMenu() {
     var url = 'http://localhost:8080/api/category/public/all-category';
     const response = await fetch(url, {});
     var list = await response.json();
+    console.log("this is list category of function loadCategory : ")
+    console.log(list);
     var main = ''
     for (i = 0; i < list.length; i++) {
         main += `<li class="nav-item dropdown ddtog">
@@ -111,28 +113,7 @@ async function searchMenu() {
     }
     document.getElementById("listproductmn").innerHTML = main;
 }
-async function searchMenuMobile() {
-    var texts = document.getElementById("inputsearchmobile").value
-    if (texts.length == 0) {
-        document.getElementById("listproductsearchmobile").innerHTML = '';
-        return;
-    }
-    var url = 'http://localhost:8080/api/product/public/search-by-param?page=0&size=50&search=' + texts;
-    const response = await fetch(url, {});
-    var result = await response.json();
-    var list = result.content;
-    var main = '';
-    for (i = 0; i < list.length; i++) {
-        main += `<div class="singlesearch col-md-12">
-                    <div class="p40"><a href="detail?id=${list[i].id}&name=${list[i].name}"><img class="imgprosearchp" src="${list[i].imageBanner}"></a></div>
-                    <div class="p60">
-                        <a href="detail?id=${list[i].id}&name=${list[i].alias}"><span class="tenspsearch">${list[i].name}</span><br>
-                        <span class="tenspsearch">${formatmoney(list[i].price)}</span></a>
-                    </div>
-                </div>`
-    }
-    document.getElementById("listproductsearchmobile").innerHTML = main;
-}
+
 
 function loadFooter() {
     var foo = `<footer class="text-center text-lg-start text-muted">

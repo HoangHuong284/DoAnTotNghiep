@@ -92,6 +92,8 @@ async function loadPrimaryBlogIndex() {
         method: 'GET'
     });
     var blog = await response.json();
+    console.log("This is log of loadPrimaryBlogInxdex() function: ")
+    console.log(blog);
     var main =
         `<a href="blogdetail?id=${blog.id}" id="hrefimgpri"><img src="${blog.imageBanner}" id="blogpriimage" class="blogpriimage"></a>
     <a href="blogdetail?id=${blog.id}" class="titlepriindex" id="titlepriindex">${blog.title}</a>`

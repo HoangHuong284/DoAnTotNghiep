@@ -1,6 +1,7 @@
 package com.web.service;
 
 import com.web.entity.Blog;
+import com.web.entity.Product;
 import com.web.exception.MessageException;
 import com.web.repository.BlogRepository;
 import com.web.utils.CommonPage;
@@ -36,11 +37,14 @@ public class BlogService {
         if (blog.isEmpty()){
             throw new MessageException("Blog not found");
         }
-        if(blog.get().getPrimaryBlog()){
-            throw new MessageException("Blog is primary, can't delete");
+        else {
+            blogRepository.deleteById(id);
         }
-        blogRepository.delete(blog.get());
+
     }
+
+
+
 
     
     public Blog findById(Long id) {
