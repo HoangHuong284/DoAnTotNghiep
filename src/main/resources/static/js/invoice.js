@@ -8,6 +8,8 @@ async function loadMyInvoice() {
     });
     var list = await response.json();
     console.log(list);
+    const userAvatarUrl = list[0].user.avatar;
+    document.getElementById("avt1").src = userAvatarUrl;
     var main = '';
     for (i = 0; i < list.length; i++) {
         main += `<tr>
@@ -63,6 +65,12 @@ async function loadMyInvoice() {
     </tr>`
     }
     document.getElementById("listinvoicemb").innerHTML = mobile
+
+
+
+
+
+
 }
 
 async function loadDetailInvoice(id) {

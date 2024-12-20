@@ -926,6 +926,12 @@ tr {
 .avataracc {
     display: block;
     margin: 0 auto;
+      width:50px;
+          /* width: ; Đặt chiều rộng ảnh, có thể thay đổi tùy ý */
+      height: 50px; /* Đặt chiều cao ảnh */
+      border-radius: 50%; /* Làm ảnh thành hình tròn */
+      bject-fit: cover; /* Cắt ảnh để khớp vùng tròn */
+      margin-bottom: 10px;
 }
 
 .fullnamacc {
@@ -976,6 +982,7 @@ tr {
 
 .avaaccount {
     padding: 20px;
+
 }
 
 .navright {
@@ -1550,7 +1557,13 @@ tr {
 }
 
 .avtuserdangctl {
-    width: 30px;
+     margin-block-start:-2px;
+     width:30px;
+      /* width: ; Đặt chiều rộng ảnh, có thể thay đổi tùy ý */
+     height: 30px; /* Đặt chiều cao ảnh */
+     border-radius: 50%; /* Làm ảnh thành hình tròn */
+     object-fit: cover; /* Cắt ảnh để khớp vùng tròn */
+
 }
 
 .usernamedangctl {

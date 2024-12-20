@@ -24,7 +24,8 @@ async function loadProductComment() {
             <div class="row">
                 <div class="col-11">
                     <div class="d-flex nguoidangctl">
-                        <img class="avtuserdangctl" src="image/avatar.webp">
+
+                        <img class="avtuserdangctl" src="${list[i].user.avatar==null?'':list[i].user.avatar}">
                         <span class="usernamedangctl">${list[i].user.fullName==null?'Người dùng':list[i].user.fullName}</span>
                         <span class="ngaytraloi">${list[i].createdDate}</span>
                         <span class="starcmts">${star}</span>
