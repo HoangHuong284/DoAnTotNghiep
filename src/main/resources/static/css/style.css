@@ -2692,3 +2692,11 @@ tr {
         margin-top: 20px;
     }
 }
+
+.blogavt {
+     width:40px;
+      /* width: ; Đặt chiều rộng ảnh, có thể thay đổi tùy ý */
+     height: 40px; /* Đặt chiều cao ảnh */
+     border-radius: 50%; /* Làm ảnh thành hình tròn */
+     object-fit: cover; /* Cắt ảnh để khớp vùng tròn */
+ }

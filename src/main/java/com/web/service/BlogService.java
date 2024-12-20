@@ -42,11 +42,6 @@ public class BlogService {
         }
 
     }
-
-
-
-
-    
     public Blog findById(Long id) {
         Optional<Blog> blog = blogRepository.findById(id);
         if (blog.isEmpty()){

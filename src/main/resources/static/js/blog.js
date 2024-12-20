@@ -42,6 +42,7 @@ async function loadPrimaryBlog() {
         method: 'GET'
     });
     var blog = await response.json();
+    console.log(blog);
     document.getElementById("bannerimgblog").src = blog.imageBanner
     document.getElementById("titlebloghea").innerHTML = blog.title
     document.getElementById("desblogpri").innerHTML = blog.description
