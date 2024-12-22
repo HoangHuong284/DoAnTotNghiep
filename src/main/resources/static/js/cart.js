@@ -3,6 +3,7 @@ async function addCart(type) {
         toastr.error("Bạn chưa đăng nhập");
         return
     }
+
     var quantity = document.getElementById("inputslcart").value
     var uls = new URL(document.URL)
     var id = uls.searchParams.get("id");
@@ -63,45 +64,15 @@ async function loadAllCart() {
                 </tr>`
         total += Number(list[i].quantity * list[i].product.price)
     }
-    document.getElementById("listcartDes").innerHTML = main
-    loadAllCartMobile();
-    document.getElementById("slcart").innerHTML = list.length
-    document.getElementById("tonggiatien").innerHTML = formatmoney(total)
-}
+    console.log("this is tong gia tien of cart : ");
+    console.log(total);
+    console.log(formatmoney(total));
+    console.log(list.length);
+    console.log(document.getElementById("tonggiatien"));
+    document.getElementById("listcartDes").innerHTML = main;
+    document.getElementById("slcart").innerHTML = list.length;
+    document.getElementById("tonggiatien").innerHTML = formatmoney(total);
 
-async function loadAllCartMobile() {
-    if(token == null){
-        window.location.href = 'login'
-    }
-    var url = 'http://localhost:8080/api/cart/user/my-cart' ;
-    const response = await fetch(url, {
-        method: 'GET',
-        headers: new Headers({
-            'Authorization': 'Bearer ' + token
-        })
-    });
-    var list = await response.json();
-    var main = ''
-    for (i = 0; i < list.length; i++) {
-        main += `<tr>
-        <td>
-            <a href="detail?id=${list[i].product.id}&name=${list[i].product.name}"><img class="imgprocmobile" src="${list[i].product.imageBanner}"></a>
-        </td>
-        <td class="tdinforcart">
-            <a href="detail?id=${list[i].product.id}&name=${list[i].product.name}" class="nameprocmobile">${list[i].product.name}</a>
-            <div class="clusinpmobile">
-                <button onclick="upDownQuantity(${list[i].id},'DOWN')" class="cartbtn"> - </button>
-                <input value="${list[i].quantity}" class="inputslcart">
-                <button onclick="upDownQuantity(${list[i].id},'UP')" class="cartbtn"> + </button>
-            </div>
-        </td>
-        <td class="tdinforcart">
-            <i onclick="remove(${list[i].id})" class="fa fa-trash-o facartde cartdels"></i>
-            <p class="boldcart pricecmobile">${formatmoney(list[i].quantity * list[i].product.price)}&ThinSpace;</p>
-        </td>
-    </tr>`
-    }
-    document.getElementById("tablemobilecart").innerHTML = main
 }
 
 async function remove(id) {
@@ -153,14 +124,19 @@ async function productLqCart() {
         listTrademark.push(list[i].product.category.id)
     }
 
+    console("ListTrademark :" ); console.log(listTrademark);
 
-    var url = 'http://localhost:8080/api/product/public/search-full?page=0&size=4&sort=id,desc';
+
+
     var obj = {
         "categoryIds":listTrademark,
         "minPrice":0,
         "maxPrice":100000000
     }
+    console.log("this is obj include categoryIds , min-max price :");
     console.log(obj);
+
+    var url = 'http://localhost:8080/api/product/public/search-full?page=0&size=4&sort=id,desc';
     const res = await fetch(url, {
         method: 'POST',
         headers: new Headers({
@@ -168,8 +144,10 @@ async function productLqCart() {
         }),
         body: JSON.stringify(obj)
     });
+
     var result = await res.json();
     var list = result.content
+    console.log("this is list = result.content of api : api/product/searchfullpage size 4");
     console.log(list);
     var main = ''
     for (i = 0; i < list.length; i++) {

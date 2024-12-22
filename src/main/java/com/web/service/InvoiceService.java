@@ -76,12 +76,14 @@ public class InvoiceService {
                 throw new MessageException("Đơn hàng chưa được thanh toán");
             }
         }
+
         List<Cart> carts = cartRepository.findByUser(userUtils.getUserWithAuthority().getId());
         if(carts.size() == 0){
             throw new MessageException("Bạn chưa có sản phẩm nào trong giỏ hàng");
         }
         for(Cart c : carts){
             Product product = c.getProduct();
+            System.out.println("this is product of create invoice : " + product);
             if (product.getQuantity() < c.getQuantity()){
                 throw new MessageException("Sản phẩm "+c.getProduct().getName()+" chỉ còn lại "+product.getQuantity()+" sản phẩm");
             }

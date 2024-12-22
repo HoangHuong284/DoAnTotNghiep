@@ -53,8 +53,8 @@
 
 .searchmenu {
     background-color: #fff;
-    padding: 0px 0px 0px 5px;
-    border-radius: 10px;
+    padding: 0px 0px 0px 15px;
+    border-radius: 25px;
     height: 40px;
 }
 
@@ -62,6 +62,7 @@
     border: none;
     height: 40px;
     width: 85%;
+    border-radius: 25px;
 }
 
 .imputsearchmenu:focus {
@@ -75,7 +76,7 @@
     background: #fcaf17;
     overflow: hidden;
     border: none;
-    border-radius: 0 8px 8px 0;
+    border-radius: 0 23px 23px 0;
     width: 15%;
 }
 
@@ -2713,3 +2714,7 @@ tr {
      border-radius: 50%; /* Làm ảnh thành hình tròn */
      object-fit: cover; /* Cắt ảnh để khớp vùng tròn */
  }
+
+
+.BookshopLogo{
+}

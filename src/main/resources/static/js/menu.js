@@ -14,7 +14,7 @@ async function loadMenu() {
     }
     var menuContent =
         `<div id="topmenu" class="topmenu container-fluid row">
-        <div class="col-sm-2"><a href="index" class="linktop"><img style="width: 160px;" src="image/logologin.png"></a></div>
+        <div class="col-sm-2"><a href="index" class="linktop"><img style="width: 160px;" src="image/Blogo.png"></a></div>
         <div class="col-sm-6">
             <div class="searchmenu">
                 <form action="product"><input name="search" onkeyup="searchMenu()" class="imputsearchmenu" placeholder="Tìm kiếm" id="inputsearchmenu" aria-describedby="basic-addon1" autocomplete="off" >
@@ -46,7 +46,7 @@ async function loadMenu() {
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <a class="navbar-brand navbar-toggler" href="index"><img style="width: 140px;" src="image/logologin.png"></a>
+            <a class="navbar-brand navbar-toggler" href="index"><img style="width: 140px;" src="image/Blogo.png"></a>
             <span>
                 <i data-bs-toggle="modal" data-bs-target="#modalsearch" class="fa fa-search navbar-toggler"></i>
                 <a href="cart" class="pointermenu"><i class="fa fa-shopping-bag navbar-toggler"> <span id="slcartmenusm" class="slcartmenusm"></span></i></a>

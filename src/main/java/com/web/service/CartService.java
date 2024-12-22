@@ -81,6 +81,8 @@ public class CartService {
         for(Cart c : list){
             total += c.getQuantity() * c.getProduct().getPrice();
         }
+        System.out.println("Tổng số tiền giỏ hàng: " + total);
         return total;
     }
+
 }

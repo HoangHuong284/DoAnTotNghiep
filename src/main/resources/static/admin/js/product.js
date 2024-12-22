@@ -32,7 +32,7 @@ async function loadProduct() {
     $('#example').DataTable(
     {
                     "columnDefs": [
-                        { "targets": [1, 6, 7, 8, 9], "searchable": false } // Tắt tìm kiếm cho các cột Ảnh, Ngày tạo, Số lượng bán, Số lượng tồn kho, Hành động
+                        { "targets": [0,1, 6, 7, 8, 9], "searchable": false } // Tắt tìm kiếm cho các cột Ảnh, Ngày tạo, Số lượng bán, Số lượng tồn kho, Hành động
                     ]
                 }
     );
