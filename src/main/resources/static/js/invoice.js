@@ -28,14 +28,14 @@ async function loadMyInvoice() {
     document.getElementById("listinvoice").innerHTML = main
     document.getElementById("sldonhang").innerHTML = list.length+' đơn hàng'
 
-    var mobile = ''
+    var book = ''
     for (i = 0; i < list.length; i++) {
-        mobile += `<tr class="trmobile">
+        book += `<tr class="trbook">
         <td style="width: 40%;">Đơn hàng</td>
         <td  class="position-relative">
             <a onclick="loadDetailInvoice(${list[i].id})" data-bs-toggle="modal" data-bs-target="#modaldeail" class="yls iddhmb pointer-event">#${list[i].id}</a>
             ${(list[i].status == 1 || list[i].status== 2) && list[i].payType == 'PAYMENT_DELIVERY'?
-            `<span onclick="cancelInvoice(${list[i].id})" class="huymobile">Hủy đơn</span>`:''}
+            `<span onclick="cancelInvoice(${list[i].id})" class="huybook">Hủy đơn</span>`:''}
         </td>
     </tr>
     <tr>
@@ -138,7 +138,7 @@ async function cancelInvoice(id) {
         })
     });
 
-    if(res.status < 300){
+    if(res.status < 300)  {
         toastr.success("Hủy đơn hàng thành công!");
         loadMyInvoice();
     }

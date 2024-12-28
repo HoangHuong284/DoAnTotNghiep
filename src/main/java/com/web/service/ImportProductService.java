@@ -33,6 +33,9 @@ public class ImportProductService {
         if(product.isEmpty()){
             throw new MessageException("product not found");
         }
+        if (importProduct.getQuantity() <= 0) {
+            throw new MessageException("Quantity must be greater than 0");
+        }
         importProduct.setImportDate(new Date(System.currentTimeMillis()));
         importProduct.setImportTime(new Time(System.currentTimeMillis()));
         ImportProduct result = importProductRepository.save(importProduct);
@@ -45,6 +48,9 @@ public class ImportProductService {
     public ImportProduct update(ImportProduct importProduct) {
         if(importProduct.getId() == null){
             throw new MessageException("id require");
+        }
+        if (importProduct.getQuantity() <= 0) {
+            throw new MessageException("Quantity must be greater than 0");
         }
         Optional<ImportProduct> exist = importProductRepository.findById(importProduct.getId());
         if(exist.isEmpty()){

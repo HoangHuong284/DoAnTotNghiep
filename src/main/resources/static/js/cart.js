@@ -119,24 +119,24 @@ async function productLqCart() {
             'Authorization': 'Bearer ' + token
         })
     });
+    // list - danh sach cac san pham trong gio hang
     var list = await response.json();
+    // Lay cac category cua cac san pham trong gio hang (dung de lam goi y )
     for (i = 0; i < list.length; i++) {
         listTrademark.push(list[i].product.category.id)
     }
 
-    console("ListTrademark :" ); console.log(listTrademark);
-
-
-
-    var obj = {
-        "categoryIds":listTrademark,
-        "minPrice":0,
-        "maxPrice":100000000
-    }
+    console.log("ListTrademark:" ); console.log(listTrademark);
     console.log("this is obj include categoryIds , min-max price :");
     console.log(obj);
 
     var url = 'http://localhost:8080/api/product/public/search-full?page=0&size=4&sort=id,desc';
+    var obj = {
+            "categoryIds":listTrademark,
+            "minPrice":0,
+            "maxPrice":100000000
+    };
+
     const res = await fetch(url, {
         method: 'POST',
         headers: new Headers({

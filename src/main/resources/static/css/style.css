@@ -1223,7 +1223,7 @@ tr {
     background-color: red;
 }
 
-.trmobile {
+.trbook {
     background-color: #e0e0d1;
     line-height: 30px;
 }
@@ -1240,7 +1240,7 @@ tr {
     padding-bottom: 50px;
 }
 
-.huymobile {
+.huybook {
     position: absolute;
     right: 10px;
     cursor: pointer;
