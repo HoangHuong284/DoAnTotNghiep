@@ -30,9 +30,9 @@ public class ProductCommentService {
 
     
     public ProductComment create(CommentRequest commentRequest) {
-//        if(invoiceDetailRepository.findByUserAndProductId(userUtils.getUserWithAuthority().getId(), commentRequest.getProduct().getId()).size() == 0){
-//            throw new MessageException("Bạn chưa mua sản phẩm này, không thể bình luận sản phẩm");
-//        }
+        if(invoiceDetailRepository.findByUserAndProductId(userUtils.getUserWithAuthority().getId(), commentRequest.getProduct().getId()).size() == 0){
+            throw new MessageException("Bạn chưa mua sản phẩm này, không thể bình luận sản phẩm");
+        }
         ProductComment productComment = new ProductComment();
         productComment.setContent(commentRequest.getContent());
         productComment.setProduct(commentRequest.getProduct());
@@ -54,13 +54,15 @@ public class ProductCommentService {
             throw new MessageException("comment not found");
         }
         User user = userUtils.getUserWithAuthority();
+        if(optional.get().getUser().getId() != userUtils.getUserWithAuthority().getId()){
+            throw new MessageException("Access denied");
+        }
+
         if(user.getAuthorities().getName().equals(Contains.ROLE_ADMIN) || user.getAuthorities().getName().equals(Contains.ROLE_USER)){
             productCommentRepository.deleteById(id);
             return;
         }
-        if(optional.get().getUser().getId() != userUtils.getUserWithAuthority().getId()){
-            throw new MessageException("access denied");
-        }
+
         productCommentRepository.deleteById(id);
     }
 
