@@ -1,8 +1,11 @@
 package com.web.service;
 
 import com.web.dto.CommentRequest;
+import com.web.entity.Invoice;
+import com.web.entity.InvoiceDetail;
 import com.web.entity.ProductComment;
 import com.web.entity.User;
+import com.web.enums.Status;
 import com.web.exception.MessageException;
 import com.web.repository.InvoiceDetailRepository;
 import com.web.repository.ProductCommentRepository;
@@ -30,18 +33,37 @@ public class ProductCommentService {
 
     
     public ProductComment create(CommentRequest commentRequest) {
-        if(invoiceDetailRepository.findByUserAndProductId(userUtils.getUserWithAuthority().getId(), commentRequest.getProduct().getId()).size() == 0){
-            throw new MessageException("Bạn chưa mua sản phẩm này, không thể bình luận sản phẩm");
+        List<InvoiceDetail> invoiceDetails = invoiceDetailRepository.findByUserAndProductId(
+                userUtils.getUserWithAuthority().getId(),
+                commentRequest.getProduct().getId()
+        );
+
+        if( invoiceDetails.isEmpty()) {
+            throw new MessageException("Bạn chưa mua sản phẩm này, không thể bình luận sản phẩm !");
         }
+
+        boolean hasReceiveOrder = invoiceDetails.stream().anyMatch(
+                invoiceDetail -> {
+                    Invoice invoice = invoiceDetail.getInvoice();
+                    return invoice.getStatus() == Status.DA_NHAN;
+                }
+        );
+
+        if(!hasReceiveOrder){
+            throw new MessageException("Bạn cần nhận hàng trước khi có thể bình luận sản phẩm");
+        }
+
         ProductComment productComment = new ProductComment();
-        productComment.setContent(commentRequest.getContent());
         productComment.setProduct(commentRequest.getProduct());
+        productComment.setContent(commentRequest.getContent());
         productComment.setStar(commentRequest.getStar());
         productComment.setCreatedDate(new Date(System.currentTimeMillis()));
         productComment.setCreatedTime(new Time(System.currentTimeMillis()));
         productComment.setUser(userUtils.getUserWithAuthority());
-        ProductComment result = productCommentRepository.save(productComment);
-        return result;
+
+        return productCommentRepository.save(productComment);
+
+
     }
 
     
