@@ -1,14 +1,16 @@
 async function loadAllUser() {
     $('#example').DataTable().destroy();
-    var url = 'http://localhost:8080/api/user/admin/get-user-by-role';
     var role = document.getElementById("role").value
+    var url = 'http://localhost:8080/api/user/admin/get-user-by-role';
+
     if (role != "") {
         url += '?role=' + role
     }
     const response = await fetch(url, {
         method: 'GET',
         headers: new Headers({
-            'Authorization': 'Bearer ' + token
+            'Authorization': 'Bearer ' + token,
+            'Content-Type': 'application/json',
         })
     });
     var listUser = await response.json();
@@ -36,6 +38,10 @@ async function loadAllUser() {
     }
     document.getElementById("listuser").innerHTML = main
     $('#example').DataTable();
+}
+
+function filteruser() {
+    loadAllUser();
 }
 
 async function lockOrUnlock(id, type) {
