@@ -30,6 +30,8 @@ public class CartService {
         User user = userUtils.getUserWithAuthority();
         Optional<Cart> c = cartRepository.findByProductAndUser(user.getId(), productId);
         if(c.isPresent()){
+            c.get().setQuantity(quantity + c.get().getQuantity());
+            cartRepository.save(c.get());
             return;
         }
         Optional<Product> product = productRepository.findById(productId);

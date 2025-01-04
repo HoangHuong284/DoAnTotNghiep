@@ -93,6 +93,7 @@ async function saveComment() {
         body: JSON.stringify(comment)
     });
     if (response.status < 300) {
+    document.getElementById("noidungbl").value='';
         swal({
                 title: "Thông báo",
                 text: "Đã đăng bình luận của bạn",

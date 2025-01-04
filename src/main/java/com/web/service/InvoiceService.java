@@ -153,6 +153,7 @@ public class InvoiceService {
         invoiceStatus.setUser(userUtils.getUserWithAuthority());
         invoiceStatusRepository.save(invoiceStatus);
 
+        cartRepository.deleteByUser(userUtils.getUserWithAuthority().getId());
         return result;
     }
 

@@ -42,6 +42,11 @@ public class ProductCommentService {
             throw new MessageException("Bạn chưa mua sản phẩm này, không thể bình luận sản phẩm !");
         }
 
+        String content = commentRequest.getContent();
+        if (content == null || content.trim().isEmpty()) {
+            throw new MessageException("Nội dung bình luận không được để trống!");
+        }
+
         boolean hasReceiveOrder = invoiceDetails.stream().anyMatch(
                 invoiceDetail -> {
                     Invoice invoice = invoiceDetail.getInvoice();
@@ -95,12 +100,12 @@ public class ProductCommentService {
         User user = userUtils.getUserWithAuthority();
         if(user != null){
             for(ProductComment p : list){
-                if(p.getUser().getId() == user.getId()){
+                if(p.getUser().getId().equals(user.getId())){
                     p.setIsMyComment(true);
+                }else {
+                    p.setIsMyComment(false);
                 }
-                if(user.getAuthorities().getName().equals(Contains.ROLE_ADMIN) || user.getAuthorities().getName().equals(Contains.ROLE_USER)){
-                    p.setIsMyComment(true);
-                }
+
             }
         }
         return list;

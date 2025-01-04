@@ -12751,3 +12751,8 @@ label {
 .imgtable{
     width: 40px;
 }
+
+.required {
+        color: red;
+        font-weight: bold;
+}

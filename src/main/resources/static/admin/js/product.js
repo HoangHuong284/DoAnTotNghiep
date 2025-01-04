@@ -82,6 +82,40 @@ async function loadAProduct() {
 
 var linkbanner = '';
 async function saveProduct() {
+function validateForm() {
+        let isValid = true;
+        const requiredFields = [
+            { id: "tensp", message: "Tên sản phẩm không được để trống." },
+            { id: "masp", message: "Mã sản phẩm không được để trống." },
+            { id: "listcategory", message: "Vui lòng chọn danh mục." },
+            { id: "tacgia", message: "Tác giả không được để trống." },
+            { id: "price", message: "Giá tiền hiện tại không được để trống." },
+            { id: "soluong", message: "Số lượng không được để trống." },
+            { id: "hinhthuc", message: "Hình thức không được để trống." },
+            { id: "kichthuoc", message: "Kích thước không được để trống." },
+            { id: "nxb", message: "Nhà xuất bản không được để trống." },
+            { id: "namxb", message: "Năm xuất bản không được để trống." },
+            { id: "khoiluong", message: "Khối lượng không được để trống." },
+            { id: "sotrang", message: "Số trang không được để trống." }
+        ];
+
+        requiredFields.forEach(field => {
+            const element = document.getElementById(field.id);
+            if (!element.value.trim()) {
+                isValid = false;
+                toastr.error(field.message); // Hiển thị lỗi
+                element.focus(); // Đưa con trỏ đến trường lỗi đầu tiên
+            }
+        });
+
+        return isValid;
+    }
+
+    // Kiểm tra dữ liệu nhập trước khi gửi yêu cầu
+    if (!validateForm()) {
+        return;
+    }
+
     var uls = new URL(document.URL)
     var id = uls.searchParams.get("id");
     var url = 'http://localhost:8080/api/product/admin/create';

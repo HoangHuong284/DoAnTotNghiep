@@ -18,10 +18,6 @@ $(document).ready(function() {
                 <div class="sb-nav-link-icon"><i class="fas fa-table iconmenu"></i></div>
                 Danh mục
             </a>
-            <a class="nav-link" href="banner">
-                <div class="sb-nav-link-icon"><i class="fas fa-image iconmenu"></i></div>
-                Banner
-            </a>
             <a class="nav-link" href="product">
                 <div class="sb-nav-link-icon"><i class="fas fa-tshirt iconmenu"></i></div>
                 Sản phẩm

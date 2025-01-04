@@ -13,7 +13,7 @@ async function checkroleUser() {
         window.location.replace('login')
     }
 }
-var total = 0;
+var total = 30000;
 
 async function loadCartCheckOut() {
     var url = 'http://localhost:8080/api/cart/user/my-cart' ;
