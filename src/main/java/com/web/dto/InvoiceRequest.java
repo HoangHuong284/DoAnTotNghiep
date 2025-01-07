@@ -14,6 +14,10 @@ public class InvoiceRequest {
 
     private String orderIdMomo;
 
+    private String vnpOrderInfo;
+
+    private String urlVnpay;
+
     private String address;
 
     private String fullName;

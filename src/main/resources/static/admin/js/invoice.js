@@ -50,7 +50,7 @@ async function loadInvoice(page) {
                     <td>${list[i].createdTime}<br>${list[i].createdDate}</td>
                     <td>${list[i].address} , ${list[i].wards.name}<br>${list[i].wards.districts.name}, ${list[i].wards.districts.province.name}</td>
                     <td>${formatmoney(list[i].totalAmount)} <br>${list[i].voucher == null?'':`-`+formatmoney(list[i].voucher.discount)}</td>
-                    <td>${list[i].payType == 'PAYMENT_MOMO'?'<span class="dathanhtoan">Đã thanh toán</span>':'<span class="chuathanhtoan">Thanh toán khi nhận hàng(COD)</span>'}</td>
+                    <td>${list[i].payType != 'PAYMENT_DELIVERY'?'<span class="dathanhtoan">Đã thanh toán</span>':'<span class="chuathanhtoan">Thanh toán khi nhận hàng(COD)</span>'}</td>
                     <td>${list[i].status}</td>
                     <td class="sticky-col">
                         <i onclick="loadDetailInvoice(${list[i].id})" data-bs-toggle="modal" data-bs-target="#modaldeail" class="fa fa-eye iconaction"></i>

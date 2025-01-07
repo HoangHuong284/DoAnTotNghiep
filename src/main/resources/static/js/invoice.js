@@ -17,7 +17,7 @@ async function loadMyInvoice() {
                     <td class="floatr">${list[i].createdTime}<br>${list[i].createdDate}</td>
                     <td>${list[i].address}, ${list[i].wards.name}<br>${list[i].wards.districts.name}, ${list[i].wards.districts.province.name}</td>
                     <td class="floatr"><span class="yls">${formatmoney(list[i].totalAmount)}<br>${list[i].voucher == null?'':`-`+formatmoney(list[i].voucher.discount)}</span></td>
-                    <td><span class="span_pending">${list[i].payType == 'PAYMENT_MOMO'?'<span class="dathanhtoan">Đã thanh toán</span>':'<span class="chuathanhtoan">Chưa thanh toán</span>'}</span></td>
+                    <td><span class="span_pending">${list[i].payType != 'PAYMENT_DELIVERY'?'<span class="dathanhtoan">Đã thanh toán</span>':'<span class="chuathanhtoan">Chưa thanh toán</span>'}</span></td>
                     <td class="floatr"><span class="span_">${list[i].status}</span></td>
                     <td>
                     ${(list[i].status == 'DANG_CHO_XAC_NHAN' || list[i].status== 'DA_XAC_NHAN') && list[i].payType == 'PAYMENT_DELIVERY'?

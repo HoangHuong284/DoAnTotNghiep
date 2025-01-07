@@ -38,13 +38,7 @@ async function loadAllUser() {
     }
     document.getElementById("listuser").innerHTML = main
     $('#example').DataTable();
-    $('#example').DataTable(s
-        {
-                        "columnDefs": [
-                            { "targets": [0,1, 4, 5], "searchable": false } // Tắt tìm kiếm cho các cột Ảnh, Ngày tạo, Số lượng bán, Số lượng tồn kho, Hành động
-                        ]
-                    }
-        );
+
 }
 
 function filteruser() {

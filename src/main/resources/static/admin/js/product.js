@@ -20,8 +20,10 @@ async function loadProduct() {
                     <td>${list[i].name}</td>
                     <td>${formatmoney(list[i].price)}</td>
                     <td>${list[i].createdDate}</td>
+                    <td>${list[i].createdDate}</td>
                     <td>${list[i].quantitySold}</td>
                     <td>${list[i].quantity}</td>
+
                     <td class="sticky-col">
                         <i onclick="deleteProduct(${list[i].id})" class="fa fa-trash-alt iconaction"></i>
                         <a href="addproduct?id=${list[i].id}"><i class="fa fa-edit iconaction"></i><br></a>
@@ -185,10 +187,6 @@ function loadInit() {
         }
 
         function readAndPreview(file) {
-
-            // if (!/\.(jpe?g|png|gif|webp)$/i.test(file.name)) {
-            //     return alert(file.name + " is not an image");
-            // }
 
             var reader = new FileReader(file);
 
