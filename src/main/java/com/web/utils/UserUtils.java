@@ -32,6 +32,7 @@ public class UserUtils implements UserDetailsService {
         return new CustomUserDetails(user.get());
     }
 
+    // lấy thông tin người dùng đang đăng nhập
     public User getUserWithAuthority(){
         try {
             Long id =Long.valueOf(SecurityUtils.getCurrentUserLogin().get());

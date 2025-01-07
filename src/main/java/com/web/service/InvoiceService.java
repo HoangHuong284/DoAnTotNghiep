@@ -11,6 +11,7 @@ import com.web.processor.QueryTransactionStatus;
 import com.web.repository.*;
 import com.web.utils.MailService;
 import com.web.utils.UserUtils;
+import com.web.vnpay.VNPayService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -55,6 +56,9 @@ public class InvoiceService {
     @Autowired
     private VoucherService voucherService;
 
+    @Autowired
+    private VNPayService vnPayService;
+
     
     public Invoice create(InvoiceRequest invoiceRequest) {
         if(invoiceRequest.getPayType().equals(PayType.PAYMENT_MOMO)){
@@ -76,7 +80,18 @@ public class InvoiceService {
                 throw new MessageException("Đơn hàng chưa được thanh toán");
             }
         }
-
+        if(invoiceRequest.getPayType().equals(PayType.PAYMENT_VNPAY)){
+            if(invoiceRequest.getVnpOrderInfo() == null){
+                throw new MessageException("vnpay order infor require");
+            }
+            if(historyPayRepository.findByOrderIdAndRequestId(invoiceRequest.getVnpOrderInfo(), invoiceRequest.getVnpOrderInfo()).isPresent()){
+                throw new MessageException("Đơn hàng đã được thanh toán");
+            }
+            int paymentStatus = vnPayService.orderReturnByUrl(invoiceRequest.getUrlVnpay());
+            if(paymentStatus != 1){
+                throw new MessageException("Thanh toán thất bại");
+            }
+        }
         List<Cart> carts = cartRepository.findByUser(userUtils.getUserWithAuthority().getId());
         if(carts.size() == 0){
             throw new MessageException("Bạn chưa có sản phẩm nào trong giỏ hàng");
@@ -135,11 +150,17 @@ public class InvoiceService {
             productRepository.save(product);
         }
 
-        if(invoiceRequest.getPayType().equals(PayType.PAYMENT_MOMO)){
+        if(!invoiceRequest.getPayType().equals(PayType.PAYMENT_DELIVERY)){
             HistoryPay historyPay = new HistoryPay();
             historyPay.setInvoice(result);
-            historyPay.setRequestId(invoiceRequest.getRequestIdMomo());
-            historyPay.setOrderId(invoiceRequest.getOrderIdMomo());
+            if(invoiceRequest.getPayType().equals(PayType.PAYMENT_MOMO)){
+                historyPay.setRequestId(invoiceRequest.getRequestIdMomo());
+                historyPay.setOrderId(invoiceRequest.getOrderIdMomo());
+            }
+            if(invoiceRequest.getPayType().equals(PayType.PAYMENT_VNPAY)){
+                historyPay.setRequestId(invoiceRequest.getVnpOrderInfo());
+                historyPay.setOrderId(invoiceRequest.getVnpOrderInfo());
+            }
             historyPay.setCreatedTime(new Time(System.currentTimeMillis()));
             historyPay.setCreatedDate(new Date(System.currentTimeMillis()));
             historyPay.setTotalAmount(totalAmount);

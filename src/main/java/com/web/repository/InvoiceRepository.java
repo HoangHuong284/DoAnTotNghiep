@@ -34,11 +34,11 @@ public interface InvoiceRepository extends JpaRepository<Invoice,Long> {
     public Page<Invoice> findByDateAndPaytypeAndStatus(Date from, Date to, PayType payType,Status statusId, Pageable pageable);
 
 
-    @Query(value = "select sum(i.total_amount) from invoice i where Month(i.created_date) = ?1 and Year(i.created_date) = ?2 and (i.pay_type = 0 or i.status = 3)", nativeQuery = true)
+    @Query(value = "select sum(i.total_amount) from invoice i where Month(i.created_date) = ?1 and Year(i.created_date) = ?2 and (i.pay_type != 1 or i.status = 3)", nativeQuery = true)
     public Double calDt(Integer thang, Integer month, Status status, PayType payType);
 
     @Query(value = "select sum(i.total_amount) from invoice i \n" +
-            "WHERE (i.status = 3 or i.pay_type = 0 ) and i.created_date = ?1", nativeQuery = true)
+            "WHERE (i.status = 3 or i.pay_type != 1 ) and i.created_date = ?1", nativeQuery = true)
     public Double revenueByDate(Date ngay, Status status, PayType payType);
 
     @Query(value = "select count(i.id) from invoice i\n" +

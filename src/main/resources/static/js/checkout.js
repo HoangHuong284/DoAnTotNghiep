@@ -69,6 +69,9 @@ function checkout() {
     if (paytype == "momo") {
         requestPayMentMomo()
     }
+    if (paytype == "vnpay") {
+        requestPayMentVnpay()
+    }
     if (paytype == "cod") {
         paymentCod();
     }
@@ -87,6 +90,7 @@ async function requestPayMentMomo() {
         "voucherCode": voucherCode,
     }
     window.localStorage.setItem('order', JSON.stringify(orderDto));
+    window.localStorage.setItem('paytype',"PAYMENT_MOMO");
     console.log(orderDto)
 
     var paymentDto = {
@@ -113,13 +117,66 @@ async function requestPayMentMomo() {
 
 }
 
-async function paymentMomo() {
+
+async function requestPayMentVnpay() {
+    var returnurl = 'http://localhost:8080/payment'; // url return khi ng dung thanh toan thanh cong
+    var urlinit = 'http://localhost:8080/api/vnpay/urlpayment';
+    var orderDto = {
+        "payType": "PAYMENT_VNPAY",
+        "address": document.getElementById("stressName").value,
+        "fullName": document.getElementById("fullname").value,
+        "phone": document.getElementById("phone").value,
+        "wardId": document.getElementById("xa").value,
+        "note": document.getElementById("ghichudonhang").value,
+        "voucherCode": voucherCode,
+    }
+    window.localStorage.setItem('order', JSON.stringify(orderDto));
+    window.localStorage.setItem('paytype',"PAYMENT_VNPAY");
+    console.log(orderDto)
+
+    var paymentDto = {
+        "content": "thanh toán đơn hàng book store",
+        "returnUrl": returnurl,
+        "notifyUrl": returnurl,
+        "codeVoucher": voucherCode,
+    }
+    const res = await fetch(urlinit, {
+        method: 'POST',
+        headers: new Headers({
+            'Authorization': 'Bearer ' + token,
+            'Content-Type': 'application/json'
+        }),
+        body: JSON.stringify(paymentDto)
+    });
+    var result = await res.json();
+    if (res.status < 300) {
+        window.open(result.url, '_blank');
+    }
+    if (res.status == exceptionCode) {
+        toastr.warning(result.defaultMessage);
+    }
+
+}
+
+async function paymentOnline() {
     var uls = new URL(document.URL)
     var orderId = uls.searchParams.get("orderId");
     var requestId = uls.searchParams.get("requestId");
+    var vnpOrderInfo = uls.searchParams.get("vnp_OrderInfo");
+    var paytype = window.localStorage.getItem("paytype")
+
     var orderDto = JSON.parse(localStorage.getItem("order"));
-    orderDto.requestIdMomo = requestId
-    orderDto.orderIdMomo = orderId    
+    if(paytype == "PAYMENT_MOMO"){
+        orderDto.requestIdMomo = requestId
+        orderDto.orderIdMomo = orderId
+    }
+    else{
+        orderDto.vnpOrderInfo = vnpOrderInfo;
+        const currentUrl = window.location.href;
+        const parsedUrl = new URL(currentUrl);
+        const queryStringWithoutQuestionMark = parsedUrl.search.substring(1); // lay tat ca cac du lieu tu url
+        orderDto.urlVnpay = queryStringWithoutQuestionMark;
+    }
     var url = 'http://localhost:8080/api/invoice/user/create';
     var token = localStorage.getItem("token");
     const res = await fetch(url, {
